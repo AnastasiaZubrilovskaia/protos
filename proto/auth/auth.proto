@@ -11,11 +11,13 @@ service AuthService {
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
   rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
+  rpc GrantAdmin(GrantAdminRequest) returns (GrantAdminResponse);
 }
 
 message RegisterRequest {
   string email = 1;
-  string password = 2;
+  string name = 2;
+  string password = 3;
 }
 
 message RegisterResponse {
@@ -62,4 +64,13 @@ message IsAdminRequest {
   
 message IsAdminResponse {
     bool is_admin = 1;
+}
+
+message GrantAdminRequest {
+  string admin_access_token = 1; 
+  int64 user_id = 2;            
+}
+
+message GrantAdminResponse {
+  bool success = 1;
 }

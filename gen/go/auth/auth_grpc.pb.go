@@ -25,6 +25,7 @@ const (
 	AuthService_RefreshToken_FullMethodName  = "/auth.AuthService/RefreshToken"
 	AuthService_ValidateToken_FullMethodName = "/auth.AuthService/ValidateToken"
 	AuthService_IsAdmin_FullMethodName       = "/auth.AuthService/IsAdmin"
+	AuthService_GrantAdmin_FullMethodName    = "/auth.AuthService/GrantAdmin"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -37,6 +38,7 @@ type AuthServiceClient interface {
 	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
 	ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error)
 	IsAdmin(ctx context.Context, in *IsAdminRequest, opts ...grpc.CallOption) (*IsAdminResponse, error)
+	GrantAdmin(ctx context.Context, in *GrantAdminRequest, opts ...grpc.CallOption) (*GrantAdminResponse, error)
 }
 
 type authServiceClient struct {
@@ -107,6 +109,16 @@ func (c *authServiceClient) IsAdmin(ctx context.Context, in *IsAdminRequest, opt
 	return out, nil
 }
 
+func (c *authServiceClient) GrantAdmin(ctx context.Context, in *GrantAdminRequest, opts ...grpc.CallOption) (*GrantAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GrantAdminResponse)
+	err := c.cc.Invoke(ctx, AuthService_GrantAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type AuthServiceServer interface {
 	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
 	ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error)
 	IsAdmin(context.Context, *IsAdminRequest) (*IsAdminResponse, error)
+	GrantAdmin(context.Context, *GrantAdminRequest) (*GrantAdminResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedAuthServiceServer) ValidateToken(context.Context, *ValidateTo
 }
 func (UnimplementedAuthServiceServer) IsAdmin(context.Context, *IsAdminRequest) (*IsAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IsAdmin not implemented")
+}
+func (UnimplementedAuthServiceServer) GrantAdmin(context.Context, *GrantAdminRequest) (*GrantAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GrantAdmin not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -274,6 +290,24 @@ func _AuthService_IsAdmin_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_GrantAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GrantAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GrantAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GrantAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GrantAdmin(ctx, req.(*GrantAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "IsAdmin",
 			Handler:    _AuthService_IsAdmin_Handler,
+		},
+		{
+			MethodName: "GrantAdmin",
+			Handler:    _AuthService_GrantAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
