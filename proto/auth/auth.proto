@@ -12,6 +12,7 @@ service AuthService {
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
   rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
   rpc GrantAdmin(GrantAdminRequest) returns (GrantAdminResponse);
+  rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse);
 }
 
 message RegisterRequest {
@@ -73,4 +74,14 @@ message GrantAdminRequest {
 
 message GrantAdminResponse {
   bool success = 1;
+}
+
+message GetUserInfoRequest {
+  int64 user_id = 1;
+}
+
+message GetUserInfoResponse {
+  int64 user_id = 1;
+  string name = 2;
+  string email = 3;
 }
