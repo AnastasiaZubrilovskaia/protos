@@ -452,7 +452,6 @@ func (x *ValidateTokenRequest) GetAccessToken() string {
 type ValidateTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Valid         bool                   `protobuf:"varint,1,opt,name=valid,proto3" json:"valid,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -492,13 +491,6 @@ func (x *ValidateTokenResponse) GetValid() bool {
 		return x.Valid
 	}
 	return false
-}
-
-func (x *ValidateTokenResponse) GetUserId() int64 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
 }
 
 type IsAdminRequest struct {
@@ -687,7 +679,7 @@ func (x *GrantAdminResponse) GetSuccess() bool {
 
 type GetUserInfoRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -722,11 +714,11 @@ func (*GetUserInfoRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *GetUserInfoRequest) GetUserId() int64 {
+func (x *GetUserInfoRequest) GetAccessToken() string {
 	if x != nil {
-		return x.UserId
+		return x.AccessToken
 	}
-	return 0
+	return ""
 }
 
 type GetUserInfoResponse struct {
@@ -807,10 +799,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x14RefreshTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"9\n" +
 	"\x14ValidateTokenRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"F\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"-\n" +
 	"\x15ValidateTokenResponse\x12\x14\n" +
-	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x03R\x06userId\")\n" +
+	"\x05valid\x18\x01 \x01(\bR\x05valid\")\n" +
 	"\x0eIsAdminRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
@@ -819,9 +810,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x12admin_access_token\x18\x01 \x01(\tR\x10adminAccessToken\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\".\n" +
 	"\x12GrantAdminResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"-\n" +
-	"\x12GetUserInfoRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"B\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"7\n" +
+	"\x12GetUserInfoRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"B\n" +
 	"\x13GetUserInfoResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name2\xfd\x03\n" +

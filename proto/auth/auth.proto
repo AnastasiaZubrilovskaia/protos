@@ -56,7 +56,6 @@ message ValidateTokenRequest {
 
 message ValidateTokenResponse {
   bool valid = 1;
-  int64 user_id = 2;
 }
 
 
@@ -78,7 +77,7 @@ message GrantAdminResponse {
 }
 
 message GetUserInfoRequest {
-  int64 user_id = 1;
+  string access_token = 1;
 }
 
 message GetUserInfoResponse {
