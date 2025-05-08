@@ -56,6 +56,7 @@ message ValidateTokenRequest {
 
 message ValidateTokenResponse {
   bool valid = 1;
+  int64 user_id = 2;
 }
 
 
@@ -83,5 +84,4 @@ message GetUserInfoRequest {
 message GetUserInfoResponse {
   int64 user_id = 1;
   string name = 2;
-  string email = 3;
 }

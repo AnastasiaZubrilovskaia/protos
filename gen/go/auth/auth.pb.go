@@ -452,6 +452,7 @@ func (x *ValidateTokenRequest) GetAccessToken() string {
 type ValidateTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Valid         bool                   `protobuf:"varint,1,opt,name=valid,proto3" json:"valid,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -491,6 +492,13 @@ func (x *ValidateTokenResponse) GetValid() bool {
 		return x.Valid
 	}
 	return false
+}
+
+func (x *ValidateTokenResponse) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 type IsAdminRequest struct {
@@ -725,7 +733,6 @@ type GetUserInfoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -774,13 +781,6 @@ func (x *GetUserInfoResponse) GetName() string {
 	return ""
 }
 
-func (x *GetUserInfoResponse) GetEmail() string {
-	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -807,9 +807,10 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x14RefreshTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"9\n" +
 	"\x14ValidateTokenRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"-\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"F\n" +
 	"\x15ValidateTokenResponse\x12\x14\n" +
-	"\x05valid\x18\x01 \x01(\bR\x05valid\")\n" +
+	"\x05valid\x18\x01 \x01(\bR\x05valid\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\")\n" +
 	"\x0eIsAdminRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
@@ -820,11 +821,10 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x12GrantAdminResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"-\n" +
 	"\x12GetUserInfoRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"X\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"B\n" +
 	"\x13GetUserInfoResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email2\xfd\x03\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name2\xfd\x03\n" +
 	"\vAuthService\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
