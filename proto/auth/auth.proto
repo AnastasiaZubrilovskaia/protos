@@ -43,7 +43,7 @@ message LogoutRequest {
 message LogoutResponse {}
 
 message RefreshTokenRequest {
-  string refresh_token = 1;
+  string expired_access_token = 1;
 }
 
 message RefreshTokenResponse {
