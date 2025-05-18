@@ -3,16 +3,55 @@ syntax = "proto3";
 package auth;
 option go_package = "github.com/AnastasiaZubrilovskaia/protos/gen/go/auth;auth";
 
+import "google/api/annotations.proto";
 
 service AuthService {
-  rpc Register(RegisterRequest) returns (RegisterResponse);
-  rpc Login(LoginRequest) returns (LoginResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
-  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
-  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
-  rpc GrantAdmin(GrantAdminRequest) returns (GrantAdminResponse);
-  rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse){
+    option (google.api.http)={
+      post: "/api/auth/register"
+      body: "*"
+    };
+  }
+  rpc Login(LoginRequest) returns (LoginResponse){
+    option (google.api.http) = {
+      post: "/api/auth/login"
+      body: "*"
+    };
+  };
+  rpc Logout(LogoutRequest) returns (LogoutResponse){
+    option (google.api.http) = {
+      post: "/api/auth/logout"
+      body: "*"
+    };
+  };
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){
+    option (google.api.http) = {
+      post: "/api/auth/refresh"
+      body: "*"
+    };
+  };
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse){
+    option (google.api.http) = {
+      post: "/api/auth/validate"
+      body: "*"
+    };
+  };
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse){
+    option (google.api.http) = {
+      get: "/api/auth/is-admin/{user_id}"
+    };
+  };
+  rpc GrantAdmin(GrantAdminRequest) returns (GrantAdminResponse){
+    option (google.api.http) = {
+      post: "/api/auth/grant-admin"
+      body: "*"
+    };
+  };
+  rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse){
+    option (google.api.http) = {
+      get: "/api/auth/user-info"
+    };
+  };
 }
 
 message RegisterRequest {
