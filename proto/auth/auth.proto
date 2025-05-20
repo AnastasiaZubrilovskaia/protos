@@ -49,7 +49,7 @@ service AuthService {
   };
   rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse){
     option (google.api.http) = {
-      get: "/api/auth/user-info"
+      post: "/api/auth/user-info"
     };
   };
 }

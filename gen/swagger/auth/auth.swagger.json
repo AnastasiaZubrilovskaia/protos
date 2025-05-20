@@ -203,7 +203,7 @@
       }
     },
     "/api/auth/user-info": {
-      "get": {
+      "post": {
         "operationId": "AuthService_GetUserInfo",
         "responses": {
           "200": {
@@ -219,14 +219,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "access_token",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "AuthService"
         ]

@@ -817,7 +817,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/api/auth/is-admin/{user_id}\x12a\n" +
 	"\n" +
 	"GrantAdmin\x12\x17.auth.GrantAdminRequest\x1a\x18.auth.GrantAdminResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/auth/grant-admin\x12_\n" +
-	"\vGetUserInfo\x12\x18.auth.GetUserInfoRequest\x1a\x19.auth.GetUserInfoResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/api/auth/user-infoB;Z9github.com/AnastasiaZubrilovskaia/protos/gen/go/auth;authb\x06proto3"
+	"\vGetUserInfo\x12\x18.auth.GetUserInfoRequest\x1a\x19.auth.GetUserInfoResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\"\x13/api/auth/user-infoB;Z9github.com/AnastasiaZubrilovskaia/protos/gen/go/auth;authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
