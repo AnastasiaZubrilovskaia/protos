@@ -50,6 +50,7 @@ service AuthService {
   rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse){
     option (google.api.http) = {
       post: "/api/auth/user-info"
+      body: "*" 
     };
   };
 }

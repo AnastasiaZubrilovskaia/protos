@@ -219,6 +219,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authGetUserInfoRequest"
+            }
+          }
+        ],
         "tags": [
           "AuthService"
         ]
@@ -258,6 +268,14 @@
     }
   },
   "definitions": {
+    "authGetUserInfoRequest": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        }
+      }
+    },
     "authGetUserInfoResponse": {
       "type": "object",
       "properties": {

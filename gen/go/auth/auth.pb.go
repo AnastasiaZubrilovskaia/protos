@@ -807,7 +807,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"B\n" +
 	"\x13GetUserInfoResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name2\xf7\x05\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name2\xfa\x05\n" +
 	"\vAuthService\x12X\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/auth/register\x12L\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/api/auth/login\x12P\n" +
@@ -816,8 +816,8 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\rValidateToken\x12\x1a.auth.ValidateTokenRequest\x1a\x1b.auth.ValidateTokenResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/auth/validate\x12\\\n" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/api/auth/is-admin/{user_id}\x12a\n" +
 	"\n" +
-	"GrantAdmin\x12\x17.auth.GrantAdminRequest\x1a\x18.auth.GrantAdminResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/auth/grant-admin\x12_\n" +
-	"\vGetUserInfo\x12\x18.auth.GetUserInfoRequest\x1a\x19.auth.GetUserInfoResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\"\x13/api/auth/user-infoB;Z9github.com/AnastasiaZubrilovskaia/protos/gen/go/auth;authb\x06proto3"
+	"GrantAdmin\x12\x17.auth.GrantAdminRequest\x1a\x18.auth.GrantAdminResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/auth/grant-admin\x12b\n" +
+	"\vGetUserInfo\x12\x18.auth.GetUserInfoRequest\x1a\x19.auth.GetUserInfoResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/auth/user-infoB;Z9github.com/AnastasiaZubrilovskaia/protos/gen/go/auth;authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
