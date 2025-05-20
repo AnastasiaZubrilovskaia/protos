@@ -314,10 +314,6 @@
         },
         "password": {
           "type": "string"
-        },
-        "app_id": {
-          "type": "string",
-          "format": "int64"
         }
       }
     },
